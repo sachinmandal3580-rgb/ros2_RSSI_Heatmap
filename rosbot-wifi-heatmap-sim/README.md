@@ -166,17 +166,25 @@ Drive the robot around the environment until you have a complete map visible in
 RViz. Then **save the map**:
 
 ```bash
-# Terminal 4
+# SAVE IT 
 source /opt/ros/jazzy/setup.bash
 mkdir -p ~/rosbot-wifi-heatmap-sim/maps
 ros2 run nav2_map_server map_saver_cli \
   -f ~/rosbot-wifi-heatmap-sim/maps/map \
   --ros-args -p use_sim_time:=true
 ```
+### Step 5 — Run the localization with acml and saved map
+
+```bash
+# Terminal 3 (reuse)
+source ~/rosbot-wifi-heatmap-sim/install/setup.bash
+ros2 launch mappers_bringup sim_nav2_localization.launch.py \
+  map:=$HOME/rosbot-wifi-heatmap-sim/maps/map.yaml
+```
 
 This creates `maps/map.yaml` + `maps/map.pgm`.
 
-### Step 5 — Run the WiFi heatmap pipeline
+### Step 6 — Run the WiFi heatmap pipeline
 
 Stop teleop (Ctrl+C in Terminal 3). Then:
 
