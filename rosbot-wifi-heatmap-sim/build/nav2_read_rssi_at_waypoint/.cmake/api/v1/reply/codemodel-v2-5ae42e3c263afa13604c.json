@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-95a5e7f18140c293bc89.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "nav2_read_rssi_at_waypoint",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "nav2_read_rssi_at_waypoint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nav2_read_rssi_at_waypoint-a80a73e0880550903258.json",
+					"name" : "nav2_read_rssi_at_waypoint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nav2_read_rssi_at_waypoint_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nav2_read_rssi_at_waypoint_uninstall-2105eb3bbe743cae0259.json",
+					"name" : "nav2_read_rssi_at_waypoint_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-4099cc454b7776e52539.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/sachin/rosbot-wifi-heatmap-sim/build/nav2_read_rssi_at_waypoint",
+		"source" : "/home/sachin/rosbot-wifi-heatmap-sim/src/nav2_read_rssi_at_waypoint_plugin"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

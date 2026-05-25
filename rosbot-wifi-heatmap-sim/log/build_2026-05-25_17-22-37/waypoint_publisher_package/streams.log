@@ -1,0 +1,37 @@
+[0.651s] Invoking command in '/home/sachin/rosbot-wifi-heatmap-sim/src/waypoint_publisher_package': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/waypoint_publisher_package build --build-base /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build install --record /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/install.log --single-version-externally-managed install_data
+[0.814s] running egg_info
+[0.814s] creating ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info
+[0.825s] writing ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/PKG-INFO
+[0.826s] writing dependency_links to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/dependency_links.txt
+[0.826s] writing entry points to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/entry_points.txt
+[0.826s] writing requirements to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/requires.txt
+[0.826s] writing top-level names to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/top_level.txt
+[0.826s] writing manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.849s] reading manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.850s] writing manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.850s] running build
+[0.850s] running build_py
+[0.850s] creating /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build
+[0.850s] creating /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib
+[0.850s] creating /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.850s] copying waypoint_publisher_package/__init__.py -> /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.850s] copying waypoint_publisher_package/node.py -> /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.850s] running install
+[0.855s] running install_lib
+[0.867s] creating /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.867s] copying /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib/waypoint_publisher_package/__init__.py -> /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.867s] copying /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build/lib/waypoint_publisher_package/node.py -> /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.867s] byte-compiling /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package/__init__.py to __init__.cpython-312.pyc
+[0.867s] byte-compiling /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package/node.py to node.cpython-312.pyc
+[0.869s] running install_data
+[0.869s] creating /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/share/ament_index
+[0.869s] creating /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/share/ament_index/resource_index
+[0.869s] creating /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/share/ament_index/resource_index/packages
+[0.869s] copying resource/waypoint_publisher_package -> /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/share/ament_index/resource_index/packages
+[0.869s] copying package.xml -> /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/share/waypoint_publisher_package
+[0.869s] running install_egg_info
+[0.881s] Copying ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info to /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package-1.0.0-py3.12.egg-info
+[0.882s] running install_scripts
+[0.962s] Installing node script to /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/waypoint_publisher_package
+[0.962s] writing list of installed files to '/home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/install.log'
+[0.984s] Invoked command in '/home/sachin/rosbot-wifi-heatmap-sim/src/waypoint_publisher_package' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/waypoint_publisher_package build --build-base /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/build install --record /home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/install.log --single-version-externally-managed install_data
