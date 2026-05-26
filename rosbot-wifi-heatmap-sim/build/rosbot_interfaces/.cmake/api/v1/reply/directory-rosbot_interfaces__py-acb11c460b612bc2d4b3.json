@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "rosbot_interfaces__py",
+		"source" : "/home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces/rosbot_interfaces__py"
+	}
+}

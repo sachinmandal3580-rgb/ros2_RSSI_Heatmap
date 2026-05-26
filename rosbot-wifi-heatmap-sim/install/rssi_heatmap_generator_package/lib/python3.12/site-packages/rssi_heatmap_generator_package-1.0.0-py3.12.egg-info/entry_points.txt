@@ -1,0 +1,2 @@
+[console_scripts]
+node = rssi_heatmap_generator_package.node:main

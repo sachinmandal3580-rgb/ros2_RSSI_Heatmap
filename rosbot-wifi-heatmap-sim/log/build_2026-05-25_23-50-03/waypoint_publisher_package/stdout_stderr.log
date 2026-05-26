@@ -1,0 +1,19 @@
+running egg_info
+writing ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/PKG-INFO
+writing dependency_links to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/dependency_links.txt
+writing entry points to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/entry_points.txt
+writing requirements to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/requires.txt
+writing top-level names to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/top_level.txt
+reading manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+writing manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package-1.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info to /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package-1.0.0-py3.12.egg-info
+running install_scripts
+Installing node script to /home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package/lib/waypoint_publisher_package
+writing list of installed files to '/home/sachin/rosbot-wifi-heatmap-sim/build/waypoint_publisher_package/install.log'

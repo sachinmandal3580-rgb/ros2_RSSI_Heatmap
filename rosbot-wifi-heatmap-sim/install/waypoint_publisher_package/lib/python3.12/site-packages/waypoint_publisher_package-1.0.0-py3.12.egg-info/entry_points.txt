@@ -1,0 +1,2 @@
+[console_scripts]
+node = waypoint_publisher_package.node:main

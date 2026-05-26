@@ -1,0 +1,157 @@
+[0.022s] Invoking command in '/home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package:/home/sachin/rosbot-wifi-heatmap-sim/install/rssi_heatmap_generator_package:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --build /home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces -- -j12 -l12
+[0.101s] [  2%] Built target rosbot_interfaces__rs
+[0.106s] [  5%] Built target rosbot_interfaces__rosidl_generator_type_description
+[0.118s] [  5%] Built target ament_cmake_python_copy_rosbot_interfaces
+[0.133s] [  8%] Built target rosbot_interfaces__cpp
+[0.136s] [ 22%] Built target rosbot_interfaces__rosidl_generator_c
+[0.163s] [ 31%] Built target rosbot_interfaces__rosidl_typesupport_c
+[0.163s] [ 40%] Built target rosbot_interfaces__rosidl_typesupport_fastrtps_c
+[0.164s] [ 48%] Built target rosbot_interfaces__rosidl_typesupport_cpp
+[0.165s] [ 57%] Built target rosbot_interfaces__rosidl_typesupport_fastrtps_cpp
+[0.173s] [ 65%] Built target rosbot_interfaces__rosidl_typesupport_introspection_cpp
+[0.174s] [ 74%] Built target rosbot_interfaces__rosidl_typesupport_introspection_c
+[0.202s] [ 74%] Built target rosbot_interfaces
+[0.233s] [ 77%] Built target rosbot_interfaces__py
+[0.265s] [ 82%] Built target rosbot_interfaces__rosidl_generator_py
+[0.294s] [ 88%] Built target rosbot_interfaces_s__rosidl_typesupport_c
+[0.300s] [ 94%] Built target rosbot_interfaces_s__rosidl_typesupport_fastrtps_c
+[0.300s] [100%] Built target rosbot_interfaces_s__rosidl_typesupport_introspection_c
+[0.429s] running egg_info
+[0.446s] writing rosbot_interfaces.egg-info/PKG-INFO
+[0.447s] writing dependency_links to rosbot_interfaces.egg-info/dependency_links.txt
+[0.447s] writing top-level names to rosbot_interfaces.egg-info/top_level.txt
+[0.498s] reading manifest file 'rosbot_interfaces.egg-info/SOURCES.txt'
+[0.500s] writing manifest file 'rosbot_interfaces.egg-info/SOURCES.txt'
+[0.540s] [100%] Built target ament_cmake_python_build_rosbot_interfaces_egg
+[0.554s] Invoked command in '/home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package:/home/sachin/rosbot-wifi-heatmap-sim/install/rssi_heatmap_generator_package:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --build /home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces -- -j12 -l12
+[0.571s] Invoking command in '/home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package:/home/sachin/rosbot-wifi-heatmap-sim/install/rssi_heatmap_generator_package:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --install /home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces
+[0.584s] -- Install configuration: ""
+[0.584s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/ament_index/resource_index/rosidl_interfaces/rosbot_interfaces
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/msg/RssiAtWaypoint.json
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__struct.h
+[0.585s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__type_support.c
+[0.586s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__description.c
+[0.586s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__functions.h
+[0.586s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__functions.c
+[0.586s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__type_support.h
+[0.586s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rssi_at_waypoint.h
+[0.587s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rosidl_generator_c__visibility_control.h
+[0.587s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/library_path.sh
+[0.587s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/library_path.dsv
+[0.587s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_generator_c.so
+[0.587s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__rosidl_typesupport_fastrtps_c.h
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_fastrtps_c.so
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__struct.hpp
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__traits.hpp
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__builder.hpp
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__type_support.hpp
+[0.588s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rssi_at_waypoint.hpp
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/dds_fastrtps
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__rosidl_typesupport_fastrtps_cpp.hpp
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[0.589s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__type_support.c
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__rosidl_typesupport_introspection_c.h
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_introspection_c.so
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_c.so
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__type_support.cpp
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/include/rosbot_interfaces/rosbot_interfaces/msg/detail/rssi_at_waypoint__rosidl_typesupport_introspection_cpp.hpp
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_introspection_cpp.so
+[0.590s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_typesupport_cpp.so
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/pythonpath.sh
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/pythonpath.dsv
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces-1.0.0-py3.12.egg-info
+[0.591s] -- Installing: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces-1.0.0-py3.12.egg-info/PKG-INFO
+[0.591s] -- Installing: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces-1.0.0-py3.12.egg-info/dependency_links.txt
+[0.591s] -- Installing: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces-1.0.0-py3.12.egg-info/SOURCES.txt
+[0.591s] -- Installing: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces-1.0.0-py3.12.egg-info/top_level.txt
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_introspection_c.so
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/_rosbot_interfaces_s.ep.rosidl_typesupport_c.c
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/__init__.py
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_c.so
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/_rosbot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.591s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/msg
+[0.592s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/msg/_rssi_at_waypoint.py
+[0.592s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/msg/_rssi_at_waypoint_s.c
+[0.592s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/msg/__init__.py
+[0.592s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/_rosbot_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[0.634s] Listing '/home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces'...
+[0.635s] Listing '/home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/msg'...
+[0.642s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_fastrtps_c.so
+[0.642s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_introspection_c.so
+[0.643s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/python3.12/site-packages/rosbot_interfaces/rosbot_interfaces_s__rosidl_typesupport_c.so
+[0.643s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/lib/librosbot_interfaces__rosidl_generator_py.so
+[0.644s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/ament_index/resource_index/rust_packages/rosbot_interfaces
+[0.644s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust
+[0.644s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/Cargo.toml
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/src
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/src/lib.rs
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/src/msg
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/src/msg/rmw.rs
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/src/msg.rs
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/rust/build.rs
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/msg/RssiAtWaypoint.idl
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/msg/RssiAtWaypoint.msg
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/ament_index/resource_index/package_run_dependencies/rosbot_interfaces
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/ament_index/resource_index/parent_prefix_path/rosbot_interfaces
+[0.645s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/ament_prefix_path.sh
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/ament_prefix_path.dsv
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/path.sh
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/environment/path.dsv
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/local_setup.bash
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/local_setup.sh
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/local_setup.zsh
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/local_setup.dsv
+[0.646s] -- Installing: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/package.dsv
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/ament_index/resource_index/packages/rosbot_interfaces
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_generator_cExport.cmake
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_generator_cExport-noconfig.cmake
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[0.646s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_generator_cppExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_cExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_cppExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_generator_pyExport.cmake
+[0.647s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/export_rosbot_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosidl_cmake-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfacesConfig.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/cmake/rosbot_interfacesConfig-version.cmake
+[0.648s] -- Up-to-date: /home/sachin/rosbot-wifi-heatmap-sim/install/rosbot_interfaces/share/rosbot_interfaces/package.xml
+[0.651s] Invoked command in '/home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sachin/rosbot-wifi-heatmap-sim/install/waypoint_publisher_package:/home/sachin/rosbot-wifi-heatmap-sim/install/rssi_heatmap_generator_package:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.ros2_venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.ros2_venv) /usr/bin/cmake --install /home/sachin/rosbot-wifi-heatmap-sim/build/rosbot_interfaces

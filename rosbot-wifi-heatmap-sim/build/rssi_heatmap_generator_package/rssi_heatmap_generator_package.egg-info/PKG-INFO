@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: rssi-heatmap-generator-package
+Version: 1.0.0
+Summary: Collects RSSI data and generates WiFi heatmap overlays
+Maintainer: user
+Maintainer-email: user@example.com
+License: Apache-2.0
