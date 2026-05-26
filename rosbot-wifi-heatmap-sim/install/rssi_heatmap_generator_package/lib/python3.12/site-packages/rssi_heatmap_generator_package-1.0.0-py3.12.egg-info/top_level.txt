@@ -1,2 +1,0 @@
-rssi_heatmap_generator_package
-rssi_heatmap_generator_package/submodules

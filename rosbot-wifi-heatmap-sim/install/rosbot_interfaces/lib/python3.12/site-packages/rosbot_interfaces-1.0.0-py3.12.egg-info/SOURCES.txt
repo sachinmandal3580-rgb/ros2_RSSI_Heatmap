@@ -1,8 +1,0 @@
-setup.py
-rosbot_interfaces/__init__.py
-rosbot_interfaces.egg-info/PKG-INFO
-rosbot_interfaces.egg-info/SOURCES.txt
-rosbot_interfaces.egg-info/dependency_links.txt
-rosbot_interfaces.egg-info/top_level.txt
-rosbot_interfaces/msg/__init__.py
-rosbot_interfaces/msg/_rssi_at_waypoint.py

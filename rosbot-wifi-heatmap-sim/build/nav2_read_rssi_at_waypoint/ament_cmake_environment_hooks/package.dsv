@@ -1,4 +1,0 @@
-source;share/nav2_read_rssi_at_waypoint/local_setup.bash
-source;share/nav2_read_rssi_at_waypoint/local_setup.dsv
-source;share/nav2_read_rssi_at_waypoint/local_setup.sh
-source;share/nav2_read_rssi_at_waypoint/local_setup.zsh
