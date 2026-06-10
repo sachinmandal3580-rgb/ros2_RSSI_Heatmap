@@ -7,12 +7,13 @@ from geometry_msgs.msg import PoseStamped
 from std_msgs.msg import Empty
 # Utils
 import os
-import tkinter  # noqa: F401 — imported so matplotlib can use TkAgg
+import tkinter  # noqa: F401
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt  # noqa: E402
 import cv2
 import yaml
+import numpy as np
 from collections import namedtuple
 from multiprocessing import Process
 
@@ -31,23 +32,24 @@ Waypoint = namedtuple('Waypoint', 'x y')
 class FollowWaypointsClient(Node):
     def __init__(self):
         super().__init__('navigate_through_poses_client')
-        # Action client
         self._action_client = ActionClient(self, FollowWaypoints, '/follow_waypoints')
-        # Trigger publisher
         self.publisher = self.create_publisher(Empty, '/heatmap_generator_trigger', 1)
-        # User params
+
         self.declare_parameter('density', 8)
         self.declare_parameter('collision_range', 4)
         self.declare_parameter('path_to_yaml', 'map.yaml')
+        self.declare_parameter('batch_size', 20)   # NEW: send N waypoints at a time
+
         self.density = self.get_parameter('density').get_parameter_value().integer_value
         self.collision_range = self.get_parameter('collision_range').get_parameter_value().integer_value
-        # Map params
+        self.batch_size = self.get_parameter('batch_size').get_parameter_value().integer_value
+
         yaml_path = self.get_parameter('path_to_yaml').get_parameter_value().string_value
         with open(yaml_path, 'r') as file:
             data = yaml.safe_load(file)
         self.origin = Waypoint(data['origin'][0], data['origin'][1])
         self.resolution = data['resolution']
-        # Resolve image path relative to the yaml file
+
         image_path = data['image']
         if not os.path.isabs(image_path):
             image_path = os.path.join(os.path.dirname(yaml_path), image_path)
@@ -55,16 +57,75 @@ class FollowWaypointsClient(Node):
         if self.map is None:
             self.get_logger().error(f'Failed to load map image: {image_path}')
             raise FileNotFoundError(f'Map image not found: {image_path}')
-        self.waypoint_array = []
+
         self.robot_frame_waypoint_array = []
+        self.batch_index = 0
         self.p = Process(target=show_map, args=(self.map,))
 
     def send_goal(self):
-        """Generate waypoints and send to FollowWaypoints action."""
-        self.set_waypoints()
+        """Generate waypoints and send first batch."""
+        self._generate_waypoints()
+        total = len(self.robot_frame_waypoint_array)
+        self.get_logger().info(
+            f'Generated {total} waypoints — sending in batches of {self.batch_size}')
+        self._send_next_batch()
+
+    def _generate_waypoints(self):
+        """Generate waypoints using fast numpy safety check."""
+        # Build obstacle mask: True where pixel is obstacle (0) or unknown (205)
+        gray = self.map[:, :, 0]
+        obstacle_mask = (gray == 0) | (gray == 205)
+
+        # Dilate the obstacle mask by collision_range — equivalent to the old nested loop
+        # but done in one vectorised operation
+        kernel_size = 2 * self.collision_range + 1
+        kernel = np.ones((kernel_size, kernel_size), np.uint8)
+        dilated = cv2.dilate(obstacle_mask.astype(np.uint8), kernel, iterations=1)
+
+        valid_waypoints = []
+        for i in range(0, len(self.map), self.density):
+            for j in range(0, len(self.map[0]), self.density):
+                if gray[i][j] == 254:  # free space
+                    if dilated[i][j] == 0:  # not near obstacle
+                        self.map[i, j] = [0, 255, 0]   # green
+                        valid_waypoints.append(Waypoint(i, j))
+                    else:
+                        self.map[i, j] = [255, 0, 0]   # red
+
+        self.p.start()
+
+        for wp in valid_waypoints:
+            x = wp.y * self.resolution + self.origin.x
+            y = (len(self.map) - 1 - wp.x) * self.resolution + self.origin.y
+            self.robot_frame_waypoint_array.append(Waypoint(x, y))
+
+        self.get_logger().info(
+            f'{len(self.robot_frame_waypoint_array)} valid waypoints from '
+            f'{len(valid_waypoints)} candidates')
+
+    def _send_next_batch(self):
+        """Send the next batch of waypoints to Nav2."""
+        start = self.batch_index * self.batch_size
+        end = min(start + self.batch_size, len(self.robot_frame_waypoint_array))
+        batch = self.robot_frame_waypoint_array[start:end]
+
+        if not batch:
+            # All batches done
+            self.get_logger().info('All batches complete — publishing trigger...')
+            msg = Empty()
+            self.publisher.publish(msg)
+            if self.p.is_alive():
+                self.p.kill()
+            rclpy.shutdown()
+            return
+
+        self.get_logger().info(
+            f'Sending batch {self.batch_index + 1}: '
+            f'waypoints {start + 1}–{end} of {len(self.robot_frame_waypoint_array)}')
+
         msg = FollowWaypoints.Goal()
         goals = []
-        for wp in self.robot_frame_waypoint_array:
+        for wp in batch:
             waypoint = PoseStamped()
             waypoint.header.frame_id = 'map'
             waypoint.header.stamp = self.get_clock().now().to_msg()
@@ -74,60 +135,21 @@ class FollowWaypointsClient(Node):
             waypoint.pose.orientation.w = 1.0
             goals.append(waypoint)
         msg.poses = goals
-        self.get_logger().info(f'Sending {len(goals)} waypoints, waiting for server...')
+
         self._action_client.wait_for_server()
         self._send_goal_future = self._action_client.send_goal_async(msg)
-        self._send_goal_future.add_done_callback(self.response_callback)
+        self._send_goal_future.add_done_callback(self._response_callback)
 
-    def response_callback(self, future):
+    def _response_callback(self, future):
         goal_handle = future.result()
-        self.get_logger().info('Goal received by server')
+        self.get_logger().info(f'Batch {self.batch_index + 1} accepted by server')
         self._get_result_future = goal_handle.get_result_async()
-        self._get_result_future.add_done_callback(self.result_callback)
+        self._get_result_future.add_done_callback(self._result_callback)
 
-    def result_callback(self, future):
-        msg = Empty()
-        self.get_logger().info('All waypoints visited — publishing trigger...')
-        self.publisher.publish(msg)
-        self.p.kill()
-        self.get_logger().info('Done, shutting down.')
-        rclpy.shutdown()
-
-    def set_waypoints(self):
-        """Create array of waypoints based on saved map and user params."""
-        waypoint_array = []
-        for i in range(0, len(self.map), self.density):
-            for j in range(0, len(self.map[0]), self.density):
-                if self.map[i][j][0] == 254:
-                    waypoint_array.append(Waypoint(i, j))
-
-        valid_waypoint_array = [
-            wp for wp in waypoint_array if self.check_safety(wp)
-        ]
-
-        for wp in valid_waypoint_array:
-            self.map[wp.x, wp.y] = [0, 255, 0]
-        self.p.start()
-
-        for wp in valid_waypoint_array:
-            x = wp.y * self.resolution + self.origin.x
-            y = (len(self.map) - 1 - wp.x) * self.resolution + self.origin.y
-            self.robot_frame_waypoint_array.append(Waypoint(x, y))
-
-        self.get_logger().info(f'Generated {len(self.robot_frame_waypoint_array)} valid waypoints')
-
-    def check_safety(self, waypoint: Waypoint):
-        """Check if waypoint is not too close to occupied or unknown space."""
-        xbegin = max(0, waypoint.x - self.collision_range)
-        xend = min(len(self.map) - 1, waypoint.x + self.collision_range)
-        ybegin = max(0, waypoint.y - self.collision_range)
-        yend = min(len(self.map[0]) - 1, waypoint.y + self.collision_range)
-        for i in range(xbegin, xend + 1):
-            for j in range(ybegin, yend + 1):
-                if self.map[i][j][0] == 205 or self.map[i][j][0] == 0:
-                    self.map[waypoint.x][waypoint.y] = [255, 0, 0]
-                    return False
-        return True
+    def _result_callback(self, future):
+        self.get_logger().info(f'Batch {self.batch_index + 1} complete')
+        self.batch_index += 1
+        self._send_next_batch()
 
 
 def main(args=None):

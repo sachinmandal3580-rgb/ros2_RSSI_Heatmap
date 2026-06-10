@@ -235,7 +235,6 @@ waypoint_follower:
       path_loss_exponent: 3.0
 
 # ── Lifecycle Managers ──────────────────────────────────────
-# These manage the lifecycle transitions of Nav2 nodes
 
 lifecycle_manager_navigation:
   ros__parameters:

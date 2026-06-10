@@ -1,6 +1,0 @@
-{
-  "package_name": "rosbot_interfaces",
-  "non_idl_tuples": [
-    "/home/sachin/rosbot-wifi-heatmap-sim/src/rosbot_interfaces:msg/RssiAtWaypoint.msg"
-  ]
-}

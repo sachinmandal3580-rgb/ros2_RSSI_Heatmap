@@ -132,7 +132,7 @@ def generate_launch_description():
                         'ros2 lifecycle set /bt_navigator activate && '
                         'ros2 lifecycle set /velocity_smoother activate && '
                         'ros2 lifecycle set /behavior_server activate && '
-                        'echo "✅ All Nav2 nodes activated!"'
+                        'echo "All Nav2 nodes activated!"'
                     ],
                     output='screen',
                 ),

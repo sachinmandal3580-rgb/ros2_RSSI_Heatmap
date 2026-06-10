@@ -1,7 +1,0 @@
-Metadata-Version: 2.1
-Name: waypoint-publisher-package
-Version: 1.0.0
-Summary: Generates waypoints from a saved map and sends them to Nav2 FollowWaypoints
-Maintainer: user
-Maintainer-email: user@example.com
-License: Apache-2.0
