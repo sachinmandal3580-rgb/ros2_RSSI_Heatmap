@@ -1,20 +1,3 @@
-"""
-Launch Nav2 + SLAM Toolbox + RViz2 for the WiFi heatmap simulation.
-
-USAGE:
-  # First, launch Gazebo + ROSbot in a separate terminal:
-  #   ros2 launch rosbot_gazebo simulation.launch.py
-  # Or TurtleBot3:
-  #   export TURTLEBOT3_MODEL=waffle
-  #   ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
-
-  # Then launch this file:
-  ros2 launch mappers_bringup sim_nav2_slam.launch.py
-
-This file does NOT launch Gazebo — it expects a robot simulator to already be
-running and publishing /scan, /odom, /cmd_vel, /tf, /tf_static.
-"""
-
 import os
 
 from ament_index_python.packages import get_package_share_directory

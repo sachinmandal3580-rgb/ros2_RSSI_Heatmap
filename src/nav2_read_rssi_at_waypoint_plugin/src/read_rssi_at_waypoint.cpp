@@ -75,25 +75,34 @@ bool ReadRssiAtWaypoint::processAtWaypoint(
   double robot_x = curr_pose.pose.position.x;
   double robot_y = curr_pose.pose.position.y;
 
-  int rssi_sum = 0;
-  int valid = 0;
-  for (int i = 0; i < n_measurements_; ++i) {
-    int rssi = simulate_rssi(robot_x, robot_y, ap_x_, ap_y_, tx_power_, path_loss_exponent_);
-    if (rssi <= 0) {
-      rssi_sum += rssi;
-      ++valid;
-    }
-    std::this_thread::sleep_for(std::chrono::milliseconds(50));  // faster in sim
-  }
-
   auto msg = rosbot_interfaces::msg::RssiAtWaypoint();
   msg.coordinates.x = robot_x;
   msg.coordinates.y = robot_y;
   msg.coordinates.z = curr_pose.pose.position.z;
-  msg.rssi = (valid > 0) ? static_cast<int8_t>(rssi_sum / valid) : -100;
+
+  // ---------------------------------------------------------------
+  // TODO: Simulate and average RSSI measurements at the current waypoint
+  // ---------------------------------------------------------------
+  // Once the robot reaches a waypoint, estimate the wireless signal
+  // strength observed at its current location.
+  //
+  // Requirements:
+  //   1. Collect 'n_measurements_' RSSI samples using the provided
+  //      simulate_rssi() function.
+  //   2. Ignore any invalid RSSI readings (positive RSSI values) and
+  //      compute the average of all valid measurements.
+  //   3. Store the averaged RSSI value in msg.rssi.
+  //   4. If no valid measurements are available, assign -100 dBm.
+  //
+  // Hint:
+  //   • Create variables to accumulate the total RSSI and the number
+  //     of valid measurements.
+  //   • Add a short delay (50 ms) between consecutive readings to
+  //     mimic real-world signal sampling.
 
   RCLCPP_INFO(logger_, "  RSSI = %d dBm at (%.2f, %.2f)", msg.rssi, robot_x, robot_y);
   rssi_data_publisher->publish(msg);
+
   return true;
 }
 

@@ -1,5 +1,3 @@
-"""Launch the waypoint publisher and heatmap generator nodes."""
-
 import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument

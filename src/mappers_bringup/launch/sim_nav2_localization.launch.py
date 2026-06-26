@@ -1,11 +1,3 @@
-"""
-Launch Nav2 in localization mode (AMCL) using a saved map.
-
-USAGE:
-  ros2 launch mappers_bringup sim_nav2_localization.launch.py \
-    map:=$HOME/rosbot-wifi-heatmap-sim/maps/map.yaml
-"""
-
 import os
 
 from ament_index_python.packages import get_package_share_directory

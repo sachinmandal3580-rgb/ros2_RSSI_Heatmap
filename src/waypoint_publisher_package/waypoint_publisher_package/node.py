@@ -5,6 +5,7 @@ from rclpy.action import ActionClient
 from nav2_msgs.action import FollowWaypoints
 from geometry_msgs.msg import PoseStamped
 from std_msgs.msg import Empty
+
 # Utils
 import os
 import tkinter  # noqa: F401
@@ -38,7 +39,7 @@ class FollowWaypointsClient(Node):
         self.declare_parameter('density', 8)
         self.declare_parameter('collision_range', 4)
         self.declare_parameter('path_to_yaml', 'map.yaml')
-        self.declare_parameter('batch_size', 20)   # NEW: send N waypoints at a time
+        self.declare_parameter('batch_size', 20)
 
         self.density = self.get_parameter('density').get_parameter_value().integer_value
         self.collision_range = self.get_parameter('collision_range').get_parameter_value().integer_value
@@ -47,12 +48,14 @@ class FollowWaypointsClient(Node):
         yaml_path = self.get_parameter('path_to_yaml').get_parameter_value().string_value
         with open(yaml_path, 'r') as file:
             data = yaml.safe_load(file)
+
         self.origin = Waypoint(data['origin'][0], data['origin'][1])
         self.resolution = data['resolution']
 
         image_path = data['image']
         if not os.path.isabs(image_path):
             image_path = os.path.join(os.path.dirname(yaml_path), image_path)
+
         self.map = cv2.imread(image_path)
         if self.map is None:
             self.get_logger().error(f'Failed to load map image: {image_path}')
@@ -65,97 +68,147 @@ class FollowWaypointsClient(Node):
     def send_goal(self):
         """Generate waypoints and send first batch."""
         self._generate_waypoints()
+
         total = len(self.robot_frame_waypoint_array)
         self.get_logger().info(
             f'Generated {total} waypoints — sending in batches of {self.batch_size}')
+
         self._send_next_batch()
 
     def _generate_waypoints(self):
-        """Generate waypoints using fast numpy safety check."""
-        # Build obstacle mask: True where pixel is obstacle (0) or unknown (205)
-        gray = self.map[:, :, 0]
-        obstacle_mask = (gray == 0) | (gray == 205)
+        """Generate waypoints from the occupancy map."""
 
-        # Dilate the obstacle mask by collision_range — equivalent to the old nested loop
-        # but done in one vectorised operation
-        kernel_size = 2 * self.collision_range + 1
-        kernel = np.ones((kernel_size, kernel_size), np.uint8)
-        dilated = cv2.dilate(obstacle_mask.astype(np.uint8), kernel, iterations=1)
-
-        valid_waypoints = []
-        for i in range(0, len(self.map), self.density):
-            for j in range(0, len(self.map[0]), self.density):
-                if gray[i][j] == 254:  # free space
-                    if dilated[i][j] == 0:  # not near obstacle
-                        self.map[i, j] = [0, 255, 0]   # green
-                        valid_waypoints.append(Waypoint(i, j))
-                    else:
-                        self.map[i, j] = [255, 0, 0]   # red
+        # ------------------------------------------------------------------
+        # TODO 1: Generate collision-free waypoints from the occupancy map
+        # ------------------------------------------------------------------
+        # The saved occupancy map represents the environment as an image,
+        # where each pixel corresponds to either free space, an obstacle,
+        # or an unknown region. Before the robot can navigate, determine
+        # which locations are safe to visit.
+        #
+        # Your task is to generate a list of valid sampling waypoints by:
+        #
+        #   1. Reading the occupancy information from the map image.
+        #      (Hint: free space, obstacles and unknown regions have
+        #      different pixel values.)
+        #
+        #   2. Creating an obstacle mask that marks every obstacle and
+        #      unknown cell as occupied.
+        #
+        #   3. Inflating the obstacle mask using the configured
+        #      collision_range so that locations too close to walls are
+        #      also considered unsafe. This provides a safety margin for
+        #      robot navigation.
+        #
+        #   4. Sampling the map every 'density' pixels instead of checking
+        #      every pixel. This creates a uniform grid of candidate
+        #      waypoints while reducing computation.
+        #
+        #   5. For every sampled location:
+        #        • If it lies in free space and outside the inflated
+        #          obstacle region, accept it as a valid waypoint.
+        #        • Otherwise reject it.
+        #
+        #   6. Colour accepted waypoints green and rejected ones red on the
+        #      map image for visualization.
+        #
+        #   7. Convert every accepted waypoint from image (pixel)
+        #      coordinates into robot/map-frame coordinates using the map
+        #      resolution and origin loaded from the YAML file, then store
+        #      them in self.robot_frame_waypoint_array.
+        #
+        # At the end of this step, the robot should have a complete list of
+        # safe navigation targets covering the environment.
 
         self.p.start()
 
-        for wp in valid_waypoints:
-            x = wp.y * self.resolution + self.origin.x
-            y = (len(self.map) - 1 - wp.x) * self.resolution + self.origin.y
-            self.robot_frame_waypoint_array.append(Waypoint(x, y))
-
         self.get_logger().info(
-            f'{len(self.robot_frame_waypoint_array)} valid waypoints from '
-            f'{len(valid_waypoints)} candidates')
+            f'{len(self.robot_frame_waypoint_array)} valid waypoints generated')
 
     def _send_next_batch(self):
         """Send the next batch of waypoints to Nav2."""
+
         start = self.batch_index * self.batch_size
-        end = min(start + self.batch_size, len(self.robot_frame_waypoint_array))
+        end = min(start + self.batch_size,
+                  len(self.robot_frame_waypoint_array))
         batch = self.robot_frame_waypoint_array[start:end]
 
         if not batch:
-            # All batches done
-            self.get_logger().info('All batches complete — publishing trigger...')
-            msg = Empty()
-            self.publisher.publish(msg)
+            self.get_logger().info(
+                'All batches complete — publishing trigger...')
+            self.publisher.publish(Empty())
+
             if self.p.is_alive():
                 self.p.kill()
+
             rclpy.shutdown()
             return
 
         self.get_logger().info(
             f'Sending batch {self.batch_index + 1}: '
-            f'waypoints {start + 1}–{end} of {len(self.robot_frame_waypoint_array)}')
+            f'waypoints {start + 1}-{end} of '
+            f'{len(self.robot_frame_waypoint_array)}')
 
         msg = FollowWaypoints.Goal()
-        goals = []
-        for wp in batch:
-            waypoint = PoseStamped()
-            waypoint.header.frame_id = 'map'
-            waypoint.header.stamp = self.get_clock().now().to_msg()
-            waypoint.pose.position.x = wp.x
-            waypoint.pose.position.y = wp.y
-            waypoint.pose.position.z = 0.0
-            waypoint.pose.orientation.w = 1.0
-            goals.append(waypoint)
-        msg.poses = goals
 
+        # ------------------------------------------------------------------
+        # TODO 2: Convert sampled waypoints into Nav2 navigation goals
+        # ------------------------------------------------------------------
+        # Nav2 accepts navigation targets as PoseStamped messages rather
+        # than simple (x, y) coordinates. Convert every waypoint in the
+        # current batch into a navigation goal.
+        #
+        # Your task is to:
+        #
+        #   1. Iterate through every waypoint in the current batch.
+        #
+        #   2. Create a PoseStamped message for each waypoint.
+        #
+        #   3. Set:
+        #        • frame_id = "map"
+        #        • timestamp = current ROS time
+        #
+        #   4. Assign the waypoint's x and y coordinates to the pose.
+        #      The robot should remain on the ground (z = 0).
+        #
+        #   5. Use a default orientation (identity quaternion) so the
+        #      robot simply navigates to the waypoint without enforcing a
+        #      specific heading.
+        #
+        #   6. Append every generated PoseStamped message to a list and
+        #      assign that list to msg.poses.
+        #
+        # Once completed, the FollowWaypoints action server will receive
+        # the batch and autonomously navigate through each waypoint in
+        # sequence.
+        
         self._action_client.wait_for_server()
         self._send_goal_future = self._action_client.send_goal_async(msg)
         self._send_goal_future.add_done_callback(self._response_callback)
 
     def _response_callback(self, future):
         goal_handle = future.result()
-        self.get_logger().info(f'Batch {self.batch_index + 1} accepted by server')
+
+        self.get_logger().info(
+            f'Batch {self.batch_index + 1} accepted by server')
+
         self._get_result_future = goal_handle.get_result_async()
         self._get_result_future.add_done_callback(self._result_callback)
 
     def _result_callback(self, future):
-        self.get_logger().info(f'Batch {self.batch_index + 1} complete')
+        self.get_logger().info(
+            f'Batch {self.batch_index + 1} complete')
+
         self.batch_index += 1
         self._send_next_batch()
 
 
 def main(args=None):
     rclpy.init(args=args)
+
     action_client = FollowWaypointsClient()
     action_client.send_goal()
+
     rclpy.spin(action_client)
 
 
