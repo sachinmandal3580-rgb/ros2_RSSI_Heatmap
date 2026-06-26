@@ -305,10 +305,10 @@ Briefly describe:
 
 ## Final Message
 
-WiFi dead zones don't announce themselves — someone has to find them. This project replaces that someone with a robot.
+WiFi dead zones don’t speak up — they have to be discovered.
 
-What you're building here is more than a navigation exercise. It's a closed-loop sensing system: the robot doesn't just move through space, it *understands* the space — mapping it, measuring it, and turning raw signal data into something a human can immediately act on. That's the gap between a robot that follows instructions and one that delivers insight.
+This project turns that job over to a robot that doesn’t just move through space, but reads it. It senses signal strength, builds a map as it goes, and transforms invisible connectivity gaps into a clear, actionable heatmap.
 
-Every TODO you complete closes a link in that chain. Get them all right, and you'll have a system that could walk into an unknown building, survey it without human input, and hand back a heatmap ready for an infrastructure decision.
+Complete the system, and you won’t just have a robot that navigates a room — you’ll have one that understands it well enough to reveal what humans can’t easily see.
 
-That's what autonomous robotics looks like in practice — and you'll have built it from the ground up.
+That’s the shift from robotics as movement… to robotics as insight.
