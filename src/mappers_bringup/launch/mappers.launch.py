@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    default_yaml = os.path.expanduser('~/rosbot-wifi-heatmap-sim/maps/map.yaml')
+    default_yaml = os.path.expanduser('~/ros2_RSSI_Heatmap/src/maps/map.yaml')
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -17,7 +17,7 @@ def generate_launch_description():
             description='Full path to the map .yaml file'),
         DeclareLaunchArgument(
             'heatmaps_dir',
-            default_value=os.path.expanduser('~/rosbot-wifi-heatmap-sim/heatmaps'),
+            default_value=os.path.expanduser('~/ros2_RSSI_heatmap/src/heatmaps'),
             description='Directory to save generated heatmap images'),
         DeclareLaunchArgument(
             'density',

@@ -33,7 +33,7 @@ def generate_launch_description():
             description='Use simulation clock from Gazebo'),
         DeclareLaunchArgument(
             'map',
-            default_value=os.path.expanduser('~/rosbot-wifi-heatmap-sim/maps/map.yaml'),
+            default_value=os.path.expanduser('~/ros2_RSSI_Heatmap/src/maps/map.yaml'),
             description='Full path to the saved map YAML file'),
         DeclareLaunchArgument(
             'nav2_params_file', default_value=nav2_params_file,
@@ -124,14 +124,18 @@ def generate_launch_description():
                 ExecuteProcess(
                     cmd=[
                         'bash', '-c',
-                        'ros2 lifecycle set /controller_server activate && '
-                        'ros2 lifecycle set /planner_server activate && '
-                        'ros2 lifecycle set /waypoint_follower configure && '
-                        'ros2 lifecycle set /waypoint_follower activate && '
-                        'ros2 lifecycle set /bt_navigator configure && '
-                        'ros2 lifecycle set /bt_navigator activate && '
-                        'ros2 lifecycle set /velocity_smoother activate && '
-                        'ros2 lifecycle set /behavior_server activate && '
+                        'ros2 lifecycle set /controller_server configure ; '                       
+                        'ros2 lifecycle set /controller_server activate ; '
+                        'ros2 lifecycle set /planner_server configure ; '
+                        'ros2 lifecycle set /planner_server activate ; '
+                        'ros2 lifecycle set /waypoint_follower configure ; '
+                        'ros2 lifecycle set /waypoint_follower activate ; '
+                        'ros2 lifecycle set /bt_navigator configure ; '
+                        'ros2 lifecycle set /bt_navigator activate ; '
+                        'ros2 lifecycle set /velocity_smoother configure ; '
+                        'ros2 lifecycle set /velocity_smoother activate ; '
+                        'ros2 lifecycle set /behavior_server configure ; '
+                        'ros2 lifecycle set /behavior_server activate ; '
                         'echo "All Nav2 nodes activated!"'
                     ],
                     output='screen',

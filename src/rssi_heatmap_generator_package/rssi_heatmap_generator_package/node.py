@@ -31,7 +31,7 @@ class HeatmapGenerator(Node):
         self.create_subscription(Empty, '/heatmap_generator_trigger', self.trigger_callback, 10)
         # Params
         self.declare_parameter('path_to_yaml', 'map.yaml')
-        self.declare_parameter('heatmaps_dir', os.path.expanduser('~/rosbot-wifi-heatmap-sim/heatmaps'))
+        self.declare_parameter('heatmaps_dir', os.path.expanduser('~/ros2_RSSI_Heatmap/src/heatmaps'))
         # Map params
         yaml_path = self.get_parameter('path_to_yaml').get_parameter_value().string_value
         with open(yaml_path, 'r') as file:
