@@ -1,4 +1,4 @@
-# Autonomous Spatial Signal Mapper
+# SignalScout — Autonomous Spatial Signal Mapper
 
 ## Problem Statement
 
