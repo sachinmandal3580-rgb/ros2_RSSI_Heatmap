@@ -1,29 +1,31 @@
-# SignalScout — Autonomous Spatial Signal Mapper
+# SignalSCOUT — Autonomous Spatial Signal Mapper
 
 ## Problem Statement
 
-Wireless connectivity is essential in modern homes, offices, warehouses, hospitals, campuses, and industrial facilities. However, identifying areas with poor network coverage still relies heavily on manual site surveys, where engineers walk through an environment collecting signal strength measurements.
+Reliable wireless connectivity is essential in modern offices, hospitals, warehouses, campuses, factories, and smart buildings. However, despite the importance of stable network coverage, evaluating WiFi performance still relies heavily on manual site surveys. Engineers must physically walk through an environment with measurement devices, stopping at numerous locations to record signal strength and identify areas with poor connectivity.
 
-These surveys are **slow, repetitive, and difficult to reproduce consistently**.
+This process is time-consuming, labor-intensive, and often difficult to reproduce consistently. Large facilities may require hundreds of measurement points, making surveys expensive to conduct and challenging to repeat whenever the network layout changes. Moreover, manual sampling may overlook certain regions or produce inconsistent results due to variations in the survey path.
 
-This project explores how an autonomous mobile robot can perform the same task without human intervention. Instead of manually collecting WiFi measurements, the robot autonomously navigates through an environment, records simulated RSSI values at multiple locations, and generates a spatial heatmap showing wireless signal coverage.
+This project explores an autonomous alternative to traditional wireless site surveys. Instead of relying on human operators, an autonomous mobile robot performs the entire data collection process. The robot builds a map of its surroundings, navigates safely through the environment, records simulated WiFi signal strength (RSSI) at strategically distributed locations, and compiles the collected measurements into a spatial visualization of wireless coverage. By automating the survey process, the system enables faster, repeatable, and scalable network assessment while significantly reducing human effort.
 
 ---
 
 ## The Story
 
-Imagine you're responsible for evaluating WiFi coverage inside a large office building. Employees frequently report weak internet connections in meeting rooms, hallways, and certain workspaces. Although access points are installed correctly, there is no clear visualization of signal strength throughout the building.
+Imagine you're the network administrator of a large office building where employees frequently complain about unstable WiFi connections. Some meeting rooms experience frequent disconnections, certain hallways have noticeably weaker signals, and a few workspaces seem to be complete dead zones. Although multiple access points have been installed throughout the building, there is no clear understanding of how the wireless signal propagates across the entire floor.
 
-Rather than sending an engineer to manually inspect every room, an autonomous robot performs the survey:
+Traditionally, investigating these issues would require an engineer to manually walk through every corridor, office, and workspace with specialized equipment, recording signal strength measurements one location at a time. The process can take hours, and repeating the survey after changes to the network infrastructure is equally demanding.
 
-1. The robot first builds a map of the environment using **SLAM**.
-2. Once the map is available, it localizes itself and automatically generates hundreds of safe navigation waypoints.
-3. At every waypoint, the robot estimates the received WiFi signal strength, stores the measurement together with its location, and continues until the entire environment has been surveyed.
-4. Finally, all collected measurements are interpolated into a continuous heatmap that clearly highlights strong coverage areas, weak signal regions, and potential dead zones.
+Instead, an autonomous mobile robot takes over the task.
 
-> **The complete workflow transforms scattered RSSI measurements into an intuitive visualization of wireless coverage.**
+The robot first explores the environment using **SLAM**, constructing a map while simultaneously estimating its own position. Once a reliable map has been created, it localizes itself within that map and automatically generates a dense set of safe navigation waypoints that provide comprehensive coverage of the accessible area.
 
----
+The robot then begins its autonomous survey. It systematically navigates from one waypoint to the next, estimating the received WiFi signal strength (RSSI) at each location and storing every measurement together with its precise coordinates. Without requiring human supervision, it continues until the entire environment has been surveyed.
+
+After the survey is complete, the collected measurements are interpolated to generate a continuous wireless coverage heatmap. Rather than displaying isolated data points, the final visualization provides an intuitive overview of signal distribution, clearly highlighting regions with strong coverage, weak connectivity, and potential dead zones. Network administrators can use this information to evaluate access point placement, identify problematic areas, and make informed decisions to improve overall wireless performance.
+
+> By combining autonomous navigation, mapping, localization, wireless signal sampling, and spatial visualization into a single workflow, the project demonstrates how robotics can transform traditional, manual network site surveys into an efficient, repeatable, and intelligent autonomous solution.
+
 
 ## Objective
 
@@ -72,7 +74,7 @@ Receives RSSI measurements together with robot positions. After the survey is co
 
 This repository contains several TODOs that must be completed.
 
-### 1. Heatmap Generator — `rssi_heatmap_generator_package/node.py`
+### 1. Heatmap Generator — `rssi_heatmap_generator_package/rssi_heatmap_generator_package/node.py`
 
 **TODO 1 — Coordinate Conversion**
 
@@ -123,7 +125,7 @@ Implement the wireless propagation model by:
 
 ---
 
-### 4. Waypoint Publisher — `waypoint_publisher_package/node.py`
+### 4. Waypoint Publisher — `waypoint_publisher_package/waypoint_publisher_package/node.py`
 
 **TODO 1 — Generate Safe Waypoints**
 
@@ -139,25 +141,31 @@ Convert generated waypoints into `PoseStamped` messages and send them to the Nav
 
 ## Running the Project
 
-> **Before opening any terminal, build the workspace (if needed):**
-> ```bash
-> cd ~/ros2_RSSI_Heatmap
-> colcon build
-> ```
-> 
-> **For every new terminal, source the workspace:**
-> ```bash
-> cd ~/ros2_RSSI_Heatmap
-> source install/setup.bash
-> ```
+### Prerequisites 
 
----
+**Nav2 and Dependencies**
 
-### Prerequisites — Install TurtleBot3 Packages
+```bash
+sudo apt install -y \
+  ros-jazzy-navigation2 \
+  ros-jazzy-nav2-bringup \
+  ros-jazzy-nav2-bt-navigator \
+  ros-jazzy-nav2-controller \
+  ros-jazzy-nav2-planner \
+  ros-jazzy-nav2-behaviors \
+  ros-jazzy-nav2-waypoint-follower \
+  ros-jazzy-nav2-lifecycle-manager \
+  ros-jazzy-nav2-regulated-pure-pursuit-controller \
+  ros-jazzy-nav2-costmap-2d \
+  ros-jazzy-nav2-smoother \
+  ros-jazzy-nav2-velocity-smoother \
+  ros-jazzy-slam-toolbox \
+  ros-jazzy-cartographer-ros
+```
+
+**Install TurtleBot3 Packages**
 
 This project requires the TurtleBot3 packages for simulation. Install them before proceeding.
-
-**Install TurtleBot3 and its dependencies:**
 ```bash
 sudo apt update
 sudo apt install -y \
@@ -166,15 +174,23 @@ sudo apt install -y \
   ros-jazzy-turtlebot3-gazebo
 ```
 
-**Set up the TurtleBot3 workspace (if building from source):**
+**Twist Stamper Packages**
+
+The TurtleBot3 Gazebo bridge expects `geometry_msgs/msg/TwistStamped` on `/cmd_vel`, but Nav2 publishes `geometry_msgs/msg/Twist`. The `twist_stamper` package converts between them.
+
 ```bash
-mkdir -p ~/turtlebot3_ws/src
-cd ~/turtlebot3_ws/src
-git clone -b jazzy https://github.com/ROBOTIS-GIT/turtlebot3.git
-git clone -b jazzy https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-cd ~/turtlebot3_ws
-colcon build --symlink-install
+sudo apt install ros-jazzy-twist-stamper
 ```
+
+> **Set up the TurtleBot3 workspace (if building from source):**
+> ```bash
+> mkdir -p ~/turtlebot3_ws/src
+> cd ~/turtlebot3_ws/src
+> git clone -b jazzy https://github.com/ROBOTIS-GIT/turtlebot3.git
+> git clone -b jazzy https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+> ```
+
+---
 
 **Set the default TurtleBot3 model** (add to your `~/.bashrc` for persistence):
 ```bash
@@ -182,10 +198,17 @@ echo "export TURTLEBOT3_MODEL=waffle" >> ~/.bashrc
 source ~/.bashrc
 ```
 
----
-
 ### Step 1 — Launch Gazebo
 
+**Build the Turtlebot3 workspace**
+```bash
+cd ~/turtlebot3_ws
+colcon build
+```
+
+**Launch the turtlebot3 model**
+
+Terminal 1
 ```bash
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
@@ -194,10 +217,14 @@ Wait until Gazebo loads completely.
 
 ---
 
-### Step 2 — Build a Map (SLAM)
+### Step 2 — Launch SLAM & Build a Map
 
 **Launch SLAM:**
+
+Terminal 2
 ```bash
+cd ~/ros2_RSSI_Heatmap
+colcon build
 source /opt/ros/jazzy/setup.bash
 source ~/turtlebot3_ws/install/setup.bash
 source ~/ros2_RSSI_Heatmap/install/setup.bash
@@ -205,18 +232,20 @@ ros2 launch mappers_bringup sim_nav2_slam.launch.py
 ```
 
 **Open another terminal for teleoperation:**
+
+Terminal 3
 ```bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard \
-  --ros-args -r /cmd_vel:=/cmd_vel_teleop
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+> Or use the default Gazebo Teleop GUI
 
 Drive the robot around until the environment is completely mapped.
 
 **Save the generated map:**
 ```bash
-mkdir -p ~/ros2_RSSI_Heatmap/maps
+mkdir -p ~/ros2_RSSI_Heatmap/src/maps
 ros2 run nav2_map_server map_saver_cli \
-  -f ~/ros2_RSSI_Heatmap/maps/map \
+  -f ~/ros2_RSSI_Heatmap/src/maps/map \
   --ros-args -p use_sim_time:=true
 ```
 
@@ -233,10 +262,11 @@ Stop SLAM and teleoperation after saving the map.
 
 ### Step 3 — Launch Navigation
 
+Terminal 2 (after closing SLAM)
 Start localization and the Nav2 stack:
 ```bash
 ros2 launch mappers_bringup sim_nav2_localization.launch.py \
-  map:=$HOME/ros2_RSSI_Heatmap/maps/map.yaml
+  map:=$HOME/ros2_RSSI_Heatmap/src/maps/map.yaml
 ```
 
 Wait about **10–15 seconds** for all lifecycle nodes to activate.
@@ -248,7 +278,7 @@ Wait about **10–15 seconds** for all lifecycle nodes to activate.
 Launch the waypoint publisher and heatmap generator:
 ```bash
 ros2 launch mappers_bringup mappers.launch.py \
-  path_to_yaml:=$HOME/ros2_RSSI_Heatmap/maps/map.yaml
+  path_to_yaml:=$HOME/ros2_RSSI_Heatmap/src/maps/map.yaml
 ```
 
 The robot will now:
@@ -267,7 +297,7 @@ The robot will now:
 [heatmap_generator]: Heatmaps saved successfully.
 ```
 
-Generated images are stored in `~/ros2_RSSI_Heatmap/heatmaps/`, including:
+Generated images are stored in `~/ros2_RSSI_Heatmap/src/heatmaps/`, including:
 ```
 waypoints_YYYYMMDD_HHMMSS.png
 heatmap_abs_YYYYMMDD_HHMMSS.png
