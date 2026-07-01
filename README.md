@@ -335,7 +335,6 @@ Create or extend a node that:
 - Computes the distance from the robot's current position to all unvisited waypoints.
 - Selects the nearest reachable waypoint as the next navigation target.
 - Continuously updates the waypoint list until all locations have been visited.
-- Reports a mission summary including total distance traveled, waypoints visited, and overall path efficiency.
 
 ---
 
