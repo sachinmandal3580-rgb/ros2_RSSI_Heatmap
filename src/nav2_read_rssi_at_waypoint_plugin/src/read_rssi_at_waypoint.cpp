@@ -81,7 +81,7 @@ bool ReadRssiAtWaypoint::processAtWaypoint(
   msg.coordinates.z = curr_pose.pose.position.z;
 
   // ---------------------------------------------------------------
-  // TODO: Simulate and average RSSI measurements at the current waypoint
+  // TODO 1 : Simulate and average RSSI measurements at the current waypoint
   // ---------------------------------------------------------------
   // Once the robot reaches a waypoint, estimate the wireless signal
   // strength observed at its current location.
