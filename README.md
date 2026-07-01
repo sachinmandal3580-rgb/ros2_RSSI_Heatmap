@@ -303,6 +303,39 @@ waypoints_YYYYMMDD_HHMMSS.png
 heatmap_abs_YYYYMMDD_HHMMSS.png
 heatmap_rel_YYYYMMDD_HHMMSS.png
 ```
+---
+
+## Bonus Challenge 1 — Multi-Access Point Support
+
+### Objective
+
+Currently, the RSSI simulator models signal strength from a single WiFi Access Point.
+
+Modify the project so the environment supports **multiple Access Points**, allowing the robot to evaluate wireless coverage in more realistic scenarios where signals from different APs overlap. The generated heatmaps should reflect the strongest available signal (or combined coverage) at every surveyed location.
+
+### What to implement
+
+Create or extend a node that:
+- Loads multiple Access Point positions and transmission parameters from a YAML file or ROS parameters.
+- Computes the RSSI at each waypoint by evaluating the signal received from every Access Point and selecting the strongest (or combined) signal.
+- Publishes the updated RSSI measurements while remaining compatible with the existing waypoint navigation pipeline.
+- Generates wireless coverage heatmaps that visualize the effect of multiple Access Points and reports basic statistics, such as the Access Point serving each waypoint and overall coverage quality.
+
+## Bonus Challenge 2 — Nearest Waypoint First Navigation
+
+### Objective
+
+Currently, the robot visits generated waypoints in their original order, which may result in long and inefficient travel paths.
+
+Modify the project so the robot always selects the **nearest unvisited waypoint** as its next navigation goal, reducing overall travel distance and improving survey efficiency.
+
+### What to implement
+
+Create or extend a node that:
+- Computes the distance from the robot's current position to all unvisited waypoints.
+- Selects the nearest reachable waypoint as the next navigation target.
+- Continuously updates the waypoint list until all locations have been visited.
+- Reports a mission summary including total distance traveled, waypoints visited, and overall path efficiency.
 
 ---
 
