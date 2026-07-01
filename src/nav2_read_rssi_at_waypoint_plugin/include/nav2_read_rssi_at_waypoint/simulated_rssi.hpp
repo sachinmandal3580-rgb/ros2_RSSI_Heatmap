@@ -32,7 +32,7 @@ inline int simulate_rssi(
   }
 
   // ---------------------------------------------------------------
-  // TODO: Compute the simulated RSSI value
+  // TODO 1 : Compute the simulated RSSI value
   // ---------------------------------------------------------------
   // Using the computed distance, estimate the received signal
   // strength between the robot and the Access Point.
